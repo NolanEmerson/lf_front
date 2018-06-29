@@ -38,6 +38,30 @@ body {
             h1, h3 {
                 margin: 10px;
             }
+
+            h1 {
+                @media screen and (max-width: 600px), screen and (max-height: 600px) {
+                    font-size: 1em;
+                    margin: 5px;
+                }
+
+                @media screen and (max-width: 400px), screen and (max-height: 400px) {
+                    font-size: .8em;
+                    margin: 5px;
+                }
+            }
+
+            h3 {
+                @media screen and (max-width: 600px), screen and (max-height: 600px) {
+                    font-size: .8em;
+                    margin: 5px;
+                }
+
+                @media screen and (max-width: 400px), screen and (max-height: 400px) {
+                    font-size: .6em;
+                    margin: 5px;
+                }
+            }
         }
 
         img {
@@ -61,8 +85,12 @@ body {
     cursor: pointer;
 
     i {
-        font-size: 60px;
+        font-size: 4em;
         color: #e9e9e9;
+
+        @media screen and (max-width: 600px), screen and (max-height: 600px) {
+            font-size: 2em;
+        }
     }
 }
 
