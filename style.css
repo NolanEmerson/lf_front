@@ -1,0 +1,2 @@
+body{margin:0}.carouselHolder{width:80vw;position:relative;left:50vw;transform:translateX(-50%);border:1px solid black;box-sizing:border-box}.imageGallery img{width:100%}.chevron{position:absolute;z-index:10;opacity:.7;width:20%;top:50%;padding:20px}.chevron i{font-size:60px}.left{left:0;text-align:left}.right{right:0;text-align:right}
+/*# sourceMappingURL=style.css.map */
