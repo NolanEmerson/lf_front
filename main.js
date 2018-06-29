@@ -29,10 +29,22 @@ class Carousel {
     addEventHandlers() {
         $('.right').on('click', () => {
             this.nextSlide();
+
+            $('.chevron').addClass('unclickable');
+
+            setTimeout( () => {
+                $('.chevron').removeClass('unclickable');
+            }, 750)
         });
     
         $('.left').on('click', () => {
             this.prevSlide();
+            
+            $('.chevron').addClass('unclickable');
+
+            setTimeout( () => {
+                $('.chevron').removeClass('unclickable');
+            }, 750)
         });
 
         $('.carouselHolder').mouseenter( () => {
@@ -45,13 +57,22 @@ class Carousel {
     }
 
     selectSlide(current) {
-        for (let i = 0; i <= this.totalSlides; i++) {
-            if (i === current) {
-                this.slides[i].style.display = 'inline-block';
-            } else {
-                this.slides[i].style.display = 'none';
-            }
+
+        $('.itemLeft').addClass('itemRight hide').removeClass('itemLeft itemMiddle');
+        $('.itemMiddle').addClass('itemLeft').removeClass('itemMiddle itemRight');
+        $('.itemRight').removeClass('hide');
+
+        if (current === 0) {
+            $(`.carouselItem:first-child`).addClass('itemMiddle').removeClass('itemLeft itemRight hide');
+        } else {
+            $(`.carouselItem:nth-child(${current+1})`).addClass('itemMiddle').removeClass('itemLeft itemRight hide');
         }
+
+        $('.itemRight').addClass('hide');
+
+        setTimeout( () => {
+            $('.itemLeft').addClass('itemRight hide').removeClass('itemLeft itemMiddle');
+        }, 750);
 
         this.resetScroll();
         this.colorActiveIndicator(this.currentSlide);
@@ -86,6 +107,13 @@ class Carousel {
     }
 
     goToSlide(clicked) {
+        
+        if (clicked === 0) {
+            $(`.carouselItem:first-child`).addClass('itemRight hide').removeClass('itemLeft itemMiddle');
+        } else {
+            $(`.carouselItem:nth-child(${clicked+1})`).addClass('itemRight hide').removeClass('itemLeft itemMiddle');
+        }
+
         this.currentSlide = clicked;
         this.selectSlide(clicked);
     }
@@ -93,6 +121,13 @@ class Carousel {
     createIndicators(number) {
         for (let i = 0; i < number; i++) {
             const newIndicator = $('<div>').addClass('indicator').on('click', () => {
+
+                $('.indicator').addClass('unclickable');
+
+                setTimeout( () => {
+                    $('.indicator').removeClass('unclickable');
+                }, 750)
+
                 this.goToSlide(i);
             });
             $('.indicatorHolder').append(newIndicator);
