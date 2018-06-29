@@ -11,9 +11,11 @@ body {
     transform: translate(-50%, -50%);
     border: 1px solid black;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 #imageGallery {
+
     .carouselItem {
         width: 100%;
 
@@ -38,21 +40,28 @@ body {
     position: absolute;
     z-index: 10;
     opacity: .7;
-    width: 20%;
+    width: 15%;
     top: 50%;
     transform: translateY(-50%);
-    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    cursor: pointer;
+
     i {
         font-size: 60px;
     }
 }
 
 .left {
+    padding-left: 20px;
     left: 0;
     text-align: left;
 }
 
 .right {
+    padding-right: 20px;
     right: 0;
     text-align: right;
 }
@@ -76,5 +85,10 @@ body {
         border: 1px solid white;
         box-sizing: border-box;
         opacity: .7;
+        cursor: pointer;
     }
+}
+
+.active {
+    background-color: #f2f2f2;
 }
